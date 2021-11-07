@@ -22,6 +22,8 @@
 		CFB96D1527340CA700CF5111 /* ResizableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96D1427340CA700CF5111 /* ResizableView.swift */; };
 		CFB96D1727340D6900CF5111 /* Transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96D1627340D6900CF5111 /* Transform.swift */; };
 		CFC9B3D627370EFD0076E7C9 /* CardElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9B3D527370EFD0076E7C9 /* CardElementView.swift */; };
+		CFC9B3D92737FCD40076E7C9 /* Stickers in Resources */ = {isa = PBXBuildFile; fileRef = CFC9B3D82737FCD40076E7C9 /* Stickers */; };
+		CFC9B3DC2737FDD90076E7C9 /* StickerPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC9B3DB2737FDD90076E7C9 /* StickerPicker.swift */; };
 		CFD385042733BED3005740C7 /* CardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD385032733BED3005740C7 /* CardsApp.swift */; };
 		CFD385062733BED3005740C7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD385052733BED3005740C7 /* ContentView.swift */; };
 		CFD385082733BED6005740C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFD385072733BED6005740C7 /* Assets.xcassets */; };
@@ -50,6 +52,9 @@
 		CFB96D1427340CA700CF5111 /* ResizableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableView.swift; sourceTree = "<group>"; };
 		CFB96D1627340D6900CF5111 /* Transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transform.swift; sourceTree = "<group>"; };
 		CFC9B3D527370EFD0076E7C9 /* CardElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardElementView.swift; sourceTree = "<group>"; };
+		CFC9B3D72737F6340076E7C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CFC9B3D82737FCD40076E7C9 /* Stickers */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Stickers; path = "../../../suia-materials/16-adding-assets-to-your-app/assets/Stickers"; sourceTree = "<group>"; };
+		CFC9B3DB2737FDD90076E7C9 /* StickerPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickerPicker.swift; sourceTree = "<group>"; };
 		CFD385002733BED3005740C7 /* Cards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFD385032733BED3005740C7 /* CardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsApp.swift; sourceTree = "<group>"; };
 		CFD385052733BED3005740C7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -109,12 +114,21 @@
 		CFB96CFD2733CD3200CF5111 /* Single Card Views */ = {
 			isa = PBXGroup;
 			children = (
+				CFC9B3DA2737FDBC0076E7C9 /* Card Modal Views */,
 				CFD385162733C06F005740C7 /* SingleCardView.swift */,
 				CFB96CFA2733C69D00CF5111 /* CardBottomToolbar.swift */,
 				CFD3851C2733C3ED005740C7 /* CardDetailView.swift */,
 				CFC9B3D527370EFD0076E7C9 /* CardElementView.swift */,
 			);
 			path = "Single Card Views";
+			sourceTree = "<group>";
+		};
+		CFC9B3DA2737FDBC0076E7C9 /* Card Modal Views */ = {
+			isa = PBXGroup;
+			children = (
+				CFC9B3DB2737FDD90076E7C9 /* StickerPicker.swift */,
+			);
+			path = "Card Modal Views";
 			sourceTree = "<group>";
 		};
 		CFD384F72733BED3005740C7 = {
@@ -136,11 +150,13 @@
 		CFD385022733BED3005740C7 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				CFC9B3D72737F6340076E7C9 /* Info.plist */,
 				CF4EC58727345CD80039F3AE /* Config */,
 				CF4EC584273451D50039F3AE /* Extensions */,
 				CFD385112733BF1D005740C7 /* Views */,
 				CFB96CFC2733CD0F00CF5111 /* Model */,
 				CFD385032733BED3005740C7 /* CardsApp.swift */,
+				CFC9B3D82737FCD40076E7C9 /* Stickers */,
 				CFD385072733BED6005740C7 /* Assets.xcassets */,
 				CFD385092733BED6005740C7 /* Preview Content */,
 			);
@@ -229,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFD3850B2733BED6005740C7 /* Preview Assets.xcassets in Resources */,
+				CFC9B3D92737FCD40076E7C9 /* Stickers in Resources */,
 				CFD385082733BED6005740C7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,6 +274,7 @@
 				CFD385152733C004005740C7 /* CardThumbnailView.swift in Sources */,
 				CFB96CF92733C67000CF5111 /* CardModal.swift in Sources */,
 				CF4EC58F27352B160039F3AE /* PreviewData.swift in Sources */,
+				CFC9B3DC2737FDD90076E7C9 /* StickerPicker.swift in Sources */,
 				CFC9B3D627370EFD0076E7C9 /* CardElementView.swift in Sources */,
 				CF4EC59727352D250039F3AE /* Card.swift in Sources */,
 				CFB96D1727340D6900CF5111 /* Transform.swift in Sources */,
@@ -396,9 +414,9 @@
 				DEVELOPMENT_TEAM = 4K2NLU38QM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -425,9 +443,9 @@
 				DEVELOPMENT_TEAM = 4K2NLU38QM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Cards/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
