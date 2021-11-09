@@ -18,7 +18,7 @@ struct CardsView: View {
             
             if !viewState.showAllCards {
                 SingleCardView()
-                    //.navigationViewStyle(StackNavigationViewStyle())
+                    .navigationViewStyle(StackNavigationViewStyle())
             }
         }
     }

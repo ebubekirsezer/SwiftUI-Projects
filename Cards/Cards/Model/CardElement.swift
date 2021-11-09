@@ -16,6 +16,7 @@ struct ImageElement: CardElement {
     let id: UUID = UUID()
     var transform: Transform = Transform()
     var image: Image
+    var frame: AnyShape?
 }
 
 struct TextElement: CardElement {
