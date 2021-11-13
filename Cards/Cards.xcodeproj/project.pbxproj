@@ -27,6 +27,8 @@
 		CF6F87AA273FBA7900ED050C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87A9273FBA7900ED050C /* UIImageExtensions.swift */; };
 		CF6F87AC273FCC1600ED050C /* AngleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87AB273FCC1600ED050C /* AngleExtensions.swift */; };
 		CF6F87AE273FE28300ED050C /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87AD273FE28300ED050C /* TextPicker.swift */; };
+		CF6F87B0273FE9F700ED050C /* CardModalViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87AF273FE9F700ED050C /* CardModalViews.swift */; };
+		CF6F87B2273FFD5800ED050C /* LayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87B1273FFD5800ED050C /* LayoutView.swift */; };
 		CFB96CF92733C67000CF5111 /* CardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96CF82733C67000CF5111 /* CardModal.swift */; };
 		CFB96CFB2733C69D00CF5111 /* CardBottomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96CFA2733C69D00CF5111 /* CardBottomToolbar.swift */; };
 		CFB96D1527340CA700CF5111 /* ResizableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96D1427340CA700CF5111 /* ResizableView.swift */; };
@@ -67,6 +69,8 @@
 		CF6F87A9273FBA7900ED050C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		CF6F87AB273FCC1600ED050C /* AngleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtensions.swift; sourceTree = "<group>"; };
 		CF6F87AD273FE28300ED050C /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
+		CF6F87AF273FE9F700ED050C /* CardModalViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModalViews.swift; sourceTree = "<group>"; };
+		CF6F87B1273FFD5800ED050C /* LayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutView.swift; sourceTree = "<group>"; };
 		CFB96CF82733C67000CF5111 /* CardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModal.swift; sourceTree = "<group>"; };
 		CFB96CFA2733C69D00CF5111 /* CardBottomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBottomToolbar.swift; sourceTree = "<group>"; };
 		CFB96D1427340CA700CF5111 /* ResizableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,7 @@
 				CFD385162733C06F005740C7 /* SingleCardView.swift */,
 				CFB96CFA2733C69D00CF5111 /* CardBottomToolbar.swift */,
 				CFD3851C2733C3ED005740C7 /* CardDetailView.swift */,
+				CF6F87AF273FE9F700ED050C /* CardModalViews.swift */,
 				CF692A312739BB68005EA46B /* CardDrop.swift */,
 				CFC9B3D527370EFD0076E7C9 /* CardElementView.swift */,
 			);
@@ -208,6 +213,7 @@
 				CFD385052733BED3005740C7 /* ContentView.swift */,
 				CFD385122733BF39005740C7 /* CardListView.swift */,
 				CFB96D1427340CA700CF5111 /* ResizableView.swift */,
+				CF6F87B1273FFD5800ED050C /* LayoutView.swift */,
 				CFD385142733C004005740C7 /* CardThumbnailView.swift */,
 				CFD3851A2733C1B0005740C7 /* CardsView.swift */,
 				CF4EC58C27345FAC0039F3AE /* CardToolbar.swift */,
@@ -307,6 +313,7 @@
 				CF692A322739BB68005EA46B /* CardDrop.swift in Sources */,
 				CF4EC586273451E50039F3AE /* ViewExtensions.swift in Sources */,
 				CF4EC58927345CE60039F3AE /* Settings.swift in Sources */,
+				CF6F87B2273FFD5800ED050C /* LayoutView.swift in Sources */,
 				CF692A38273A8576005EA46B /* FramePicker.swift in Sources */,
 				CFD385152733C004005740C7 /* CardThumbnailView.swift in Sources */,
 				CFB96CF92733C67000CF5111 /* CardModal.swift in Sources */,
@@ -320,6 +327,7 @@
 				CFD3851D2733C3ED005740C7 /* CardDetailView.swift in Sources */,
 				CF692A302739A980005EA46B /* PhotoPicker.swift in Sources */,
 				CF4EC58B27345E980039F3AE /* ColorExtensions.swift in Sources */,
+				CF6F87B0273FE9F700ED050C /* CardModalViews.swift in Sources */,
 				CF6F87A8273FBA4700ED050C /* FileManagerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

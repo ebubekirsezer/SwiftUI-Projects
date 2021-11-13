@@ -14,15 +14,11 @@ struct CardsView: View {
     
     var body: some View {
         ZStack {
+            
+            CardListView()
             VStack {
-                Button {
-                    viewState.selectedCard = store.addCard()
-                    viewState.showAllCards = false
-                } label: {
-                    Text("Add")
-                }
-                
-                CardListView()
+                Spacer()
+                createButton
             }
             
             if !viewState.showAllCards {
@@ -30,6 +26,25 @@ struct CardsView: View {
                     .navigationViewStyle(StackNavigationViewStyle())
             }
         }
+        .background(
+            Color("background")
+                .edgesIgnoringSafeArea(.all)
+        )
+    }
+    
+    var createButton: some View {
+        Button {
+            viewState.selectedCard = store.addCard()
+            viewState.showAllCards = false
+        } label: {
+            Label("Create New", systemImage: "plus")
+                .frame(maxWidth: .infinity)
+        }
+        .font(.system(size: 16, weight: .bold))
+        .padding([.bottom, .top], 10)
+        .background(Color("barColor"))
+        .accentColor(.white)
+
     }
 }
 

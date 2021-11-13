@@ -12,66 +12,34 @@ struct CardDetailView: View {
     @EnvironmentObject var viewState: ViewState
     @Environment(\.scenePhase) private var scenePhase
     @State private var currentModal: CardModal?
-    @State private var stickerImage: UIImage?
-    @State private var images: [UIImage] = []
-    @State private var frame: AnyShape?
     @Binding var card: Card
-    @State private var textElement = TextElement()
+    
     
     var body: some View {
-        content
-            .onDrop(of: [.image], delegate: CardDrop(card: $card))
-            .modifier(CardToolbar(currentModal: $currentModal))
-            .onChange(of: scenePhase, perform: { newScenePhase in
-                if newScenePhase == .inactive {
+        GeometryReader { proxy in
+            content(size: proxy.size)
+                .onDrop(of: [.image],
+                        delegate: CardDrop(card: $card,
+                                           size: proxy.size,
+                                           frame: proxy.frame(in: .global)))
+                .modifier(CardToolbar(currentModal: $currentModal))
+                .cardModals(card: $card, currentModal: $currentModal)
+                .frame(width: calculateSize(proxy.size).width,
+                       height: calculateSize(proxy.size).height)
+                .clipped()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .onChange(of: scenePhase, perform: { newScenePhase in
+                    if newScenePhase == .inactive {
+                        card.save()
+                    }
+                })
+                .onDisappear(perform: {
                     card.save()
-                }
             })
-            .onDisappear(perform: {
-                card.save()
-            })
-            .sheet(item: $currentModal, content: { item in
-                switch item {
-                case .stickerPicker:
-                    StickerPicker(stickerImage: $stickerImage)
-                        .onDisappear {
-                            if let stickerImage = stickerImage {
-                                card.addElement(uiImage: stickerImage)
-                            }
-                            stickerImage = nil
-                        }
-                case .photoPicker:
-                    PhotoPicker(images: $images)
-                        .onDisappear {
-                            for image in images {
-                                card.addElement(uiImage: image)
-                            }
-                            images = []
-                        }
-                case .framePicker:
-                    FramePicker(frame: $frame)
-                        .onDisappear {
-                            if let frame = frame {
-                                card.update(
-                                    viewState.selectedElement, frame: frame)
-                            }
-                            frame = nil
-                        }
-                case .textPicker:
-                    TextPicker(textElement: $textElement)
-                        .onDisappear {
-                            if !textElement.text.isEmpty {
-                                card.addElement(textElement)
-                            }
-                            textElement = TextElement()
-                        }
-                default:
-                    EmptyView()
-                }
-            })
+        }
     }
     
-    var content: some View {
+    func content(size: CGSize) -> some View {
         ZStack {
             card.backgroundColor
                 .edgesIgnoringSafeArea(.all)
@@ -90,12 +58,15 @@ struct CardDetailView: View {
                         }
 
                     })
-                    .resizableView(transform: bindingTransform(for: element))
+                    .resizableView(
+                        transform: bindingTransform(for: element),
+                        viewScale: calculateScale(size))
                     .frame(width: element.transform.size.width,
                            height: element.transform.size.height)
                     .onTapGesture {
                         viewState.selectedElement = element
                     }
+                    
             }
         }
     }
@@ -106,6 +77,25 @@ struct CardDetailView: View {
         }
         
         return $card.elements[index].transform
+    }
+    
+    func calculateSize(_ size: CGSize) -> CGSize {
+        var newSize = size
+        let ratio = Settings.cardSize.width / Settings.cardSize.height
+        
+        if size.width < size.height {
+            newSize.height = min(size.height, newSize.width / ratio)
+            newSize.width = min(size.width, newSize.height * ratio)
+        } else {
+            newSize.width = min(size.width, newSize.height * ratio)
+            newSize.height = min(size.height, newSize.width / ratio)
+        }
+        return newSize
+    }
+    
+    func calculateScale(_ size: CGSize) -> CGFloat {
+        let newSize = calculateSize(size)
+        return newSize.width / Settings.cardSize.width
     }
 }
 
