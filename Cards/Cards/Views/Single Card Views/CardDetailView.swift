@@ -16,6 +16,7 @@ struct CardDetailView: View {
     @State private var images: [UIImage] = []
     @State private var frame: AnyShape?
     @Binding var card: Card
+    @State private var textElement = TextElement()
     
     var body: some View {
         content
@@ -55,6 +56,14 @@ struct CardDetailView: View {
                                     viewState.selectedElement, frame: frame)
                             }
                             frame = nil
+                        }
+                case .textPicker:
+                    TextPicker(textElement: $textElement)
+                        .onDisappear {
+                            if !textElement.text.isEmpty {
+                                card.addElement(textElement)
+                            }
+                            textElement = TextElement()
                         }
                 default:
                     EmptyView()

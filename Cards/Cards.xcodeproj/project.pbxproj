@@ -26,6 +26,7 @@
 		CF6F87A8273FBA4700ED050C /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87A7273FBA4700ED050C /* FileManagerExtensions.swift */; };
 		CF6F87AA273FBA7900ED050C /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87A9273FBA7900ED050C /* UIImageExtensions.swift */; };
 		CF6F87AC273FCC1600ED050C /* AngleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87AB273FCC1600ED050C /* AngleExtensions.swift */; };
+		CF6F87AE273FE28300ED050C /* TextPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F87AD273FE28300ED050C /* TextPicker.swift */; };
 		CFB96CF92733C67000CF5111 /* CardModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96CF82733C67000CF5111 /* CardModal.swift */; };
 		CFB96CFB2733C69D00CF5111 /* CardBottomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96CFA2733C69D00CF5111 /* CardBottomToolbar.swift */; };
 		CFB96D1527340CA700CF5111 /* ResizableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB96D1427340CA700CF5111 /* ResizableView.swift */; };
@@ -65,6 +66,7 @@
 		CF6F87A7273FBA4700ED050C /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		CF6F87A9273FBA7900ED050C /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		CF6F87AB273FCC1600ED050C /* AngleExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AngleExtensions.swift; sourceTree = "<group>"; };
+		CF6F87AD273FE28300ED050C /* TextPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPicker.swift; sourceTree = "<group>"; };
 		CFB96CF82733C67000CF5111 /* CardModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModal.swift; sourceTree = "<group>"; };
 		CFB96CFA2733C69D00CF5111 /* CardBottomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBottomToolbar.swift; sourceTree = "<group>"; };
 		CFB96D1427340CA700CF5111 /* ResizableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableView.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				CFC9B3DB2737FDD90076E7C9 /* StickerPicker.swift */,
 				CF692A2F2739A980005EA46B /* PhotoPicker.swift */,
+				CF6F87AD273FE28300ED050C /* TextPicker.swift */,
 				CF692A37273A8575005EA46B /* FramePicker.swift */,
 				CF692A332739BC75005EA46B /* PencilView.swift */,
 			);
@@ -298,6 +301,7 @@
 				CF692A3A273A86FC005EA46B /* AnyShape.swift in Sources */,
 				CF4EC59527352D050039F3AE /* CardElement.swift in Sources */,
 				CF4EC59927352D6D0039F3AE /* CardStore.swift in Sources */,
+				CF6F87AE273FE28300ED050C /* TextPicker.swift in Sources */,
 				CFB96CFB2733C69D00CF5111 /* CardBottomToolbar.swift in Sources */,
 				CFB96D1527340CA700CF5111 /* ResizableView.swift in Sources */,
 				CF692A322739BB68005EA46B /* CardDrop.swift in Sources */,
