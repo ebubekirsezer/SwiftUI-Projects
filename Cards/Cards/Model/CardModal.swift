@@ -12,4 +12,5 @@ enum CardModal: Identifiable {
         hashValue
     }
     case photoPicker, framePicker, stickerPicker, textPicker
+    case shareSheet
 }

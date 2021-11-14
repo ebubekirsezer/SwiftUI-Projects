@@ -16,27 +16,29 @@ struct CardDetailView: View {
     
     
     var body: some View {
-        GeometryReader { proxy in
-            content(size: proxy.size)
-                .onDrop(of: [.image],
-                        delegate: CardDrop(card: $card,
-                                           size: proxy.size,
-                                           frame: proxy.frame(in: .global)))
-                .modifier(CardToolbar(currentModal: $currentModal))
-                .cardModals(card: $card, currentModal: $currentModal)
-                .frame(width: calculateSize(proxy.size).width,
-                       height: calculateSize(proxy.size).height)
-                .clipped()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .onChange(of: scenePhase, perform: { newScenePhase in
-                    if newScenePhase == .inactive {
+        RenderableView(card: $card) {
+            GeometryReader { proxy in
+                content(size: proxy.size)
+                    .onDrop(of: [.image],
+                            delegate: CardDrop(card: $card,
+                                               size: proxy.size,
+                                               frame: proxy.frame(in: .global)))
+                    .frame(width: calculateSize(proxy.size).width,
+                           height: calculateSize(proxy.size).height)
+                    .clipped()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .onChange(of: scenePhase, perform: { newScenePhase in
+                        if newScenePhase == .inactive {
+                            card.save()
+                        }
+                    })
+                    .onDisappear(perform: {
                         card.save()
-                    }
                 })
-                .onDisappear(perform: {
-                    card.save()
-            })
+            }
         }
+        .modifier(CardToolbar(currentModal: $currentModal))
+        .cardModals(card: $card, currentModal: $currentModal)
     }
     
     func content(size: CGSize) -> some View {

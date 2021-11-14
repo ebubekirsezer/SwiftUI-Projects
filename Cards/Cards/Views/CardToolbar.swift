@@ -18,11 +18,23 @@ struct CardToolbar: ViewModifier {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        viewState.showAllCards.toggle()
+                        withAnimation {
+                            viewState.showAllCards = true
+                        }
                     } label: {
                         Text("Done")
                     }
                     
+                }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        viewState.shouldScreenshot = true
+                        currentModal = .shareSheet
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                    }
+
                 }
                 
                 ToolbarItem(placement: .bottomBar) {

@@ -13,17 +13,32 @@ struct CardsView: View {
     @EnvironmentObject var store: CardStore
     
     var body: some View {
-        ZStack {
+        VStack {
             
-            CardListView()
-            VStack {
-                Spacer()
-                createButton
+            if viewState.showAllCards {
+                ListSelectionView(selection: $viewState.cardListState)
             }
             
-            if !viewState.showAllCards {
-                SingleCardView()
-                    .navigationViewStyle(StackNavigationViewStyle())
+            ZStack {
+                
+                switch viewState.cardListState {
+                case .list:
+                    CardListView()
+                case .carousel:
+                    Carousel()
+                }
+                
+                VStack {
+                    Spacer()
+                    createButton
+                }
+                
+                if !viewState.showAllCards {
+                    SingleCardView()
+                        .transition(.move(edge: .bottom))
+                        .zIndex(1)
+                        .navigationViewStyle(StackNavigationViewStyle())
+                }
             }
         }
         .background(
@@ -35,7 +50,9 @@ struct CardsView: View {
     var createButton: some View {
         Button {
             viewState.selectedCard = store.addCard()
-            viewState.showAllCards = false
+            withAnimation {
+                viewState.showAllCards = false
+            } 
         } label: {
             Label("Create New", systemImage: "plus")
                 .frame(maxWidth: .infinity)
