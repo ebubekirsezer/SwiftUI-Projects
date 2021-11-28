@@ -31,6 +31,13 @@
 /// THE SOFTWARE.
 
 import Foundation
+import WidgetKit
+
+extension FileManager {
+  static func sharedContainerURL() -> URL {
+    return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.ebubekirsezer.RWFreeView.episodes")!
+  }
+}
 
 final class EpisodeStore: ObservableObject, Decodable {
   @Published var episodes: [Episode] = []
@@ -49,12 +56,28 @@ final class EpisodeStore: ObservableObject, Decodable {
     "intermediate": false
   ]
   
+  var miniEpisodes: [MiniEpisode] = []
+  
   func queryDomain(_ id: String) -> URLQueryItem {
     URLQueryItem(name: "filter[domain_ids][]", value: id)
   }
   
   func queryDifficulty(_ label: String) -> URLQueryItem {
     URLQueryItem(name: "filter[difficulties][]", value: label)
+  }
+  
+  func writeEpisodes() {
+    let archiveURL = FileManager.sharedContainerURL()
+      .appendingPathComponent("episodes.json")
+    print(">>> \(archiveURL)")
+    
+    if let dataToSave = try? JSONEncoder().encode(miniEpisodes) {
+      do {
+        try dataToSave.write(to: archiveURL)
+      } catch {
+        print("Error: can't write episodes")
+      }
+    }
   }
   
   let filtersDictionary = [
@@ -74,7 +97,7 @@ final class EpisodeStore: ObservableObject, Decodable {
     "filter[subscription_types][]": "free",
     "filter[content_types][]": "episode",
     "sort": "-popularity",
-    "page[size]": "20",
+    "page[size]": "5",
     "filter[q]": ""
   ]
   
@@ -126,6 +149,17 @@ final class EpisodeStore: ObservableObject, Decodable {
         if let decodedResponse = try? JSONDecoder().decode(EpisodeStore.self, from: data) {
           DispatchQueue.main.async {
             self.episodes = decodedResponse.episodes
+            self.miniEpisodes = self.episodes.map({
+              MiniEpisode(
+                id: $0.id,
+                name: $0.name,
+                released: $0.released,
+                domain: $0.domain,
+                difficulty: $0.difficulty ?? "",
+                description: $0.description)
+            })
+            self.writeEpisodes()
+            WidgetCenter.shared.reloadTimelines(ofKind: "RWFreeViewWidget")
           }
           return
         }

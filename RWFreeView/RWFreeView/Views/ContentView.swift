@@ -36,6 +36,7 @@ struct ContentView: View {
   
   @EnvironmentObject var store: EpisodeStore
   @State private var showFilters = false
+  @State private var selectedEpisode: Episode?
   
   var body: some View {
     NavigationView {
@@ -49,13 +50,18 @@ struct ContentView: View {
           
           ForEach(store.episodes) { episode in
             ZStack {
-              NavigationLink(destination: PlayerView(episode: episode)) {
-                EmptyView()
-              }
-              .opacity(0)
-              .buttonStyle(PlainButtonStyle())
-              
+              NavigationLink(
+                destination: PlayerView(episode: episode),
+                tag: episode,
+                selection: $selectedEpisode) {
+                  EmptyView()
+                }
+                .opacity(0)
+                .buttonStyle(PlainButtonStyle())
               EpisodeView(episode: episode)
+                .onTapGesture {
+                  selectedEpisode = episode
+                }
             }
             .frame(maxWidth: .infinity,
                    maxHeight: .infinity,
@@ -85,6 +91,12 @@ struct ContentView: View {
       }
     }
     .navigationViewStyle(StackNavigationViewStyle())
+    .onOpenURL { url in
+      if let id = url.host,
+         let widgetEpisode = store.episodes.first(where: { $0.id == id }) {
+        selectedEpisode = widgetEpisode
+      }
+    }
   }
   
   init() {
