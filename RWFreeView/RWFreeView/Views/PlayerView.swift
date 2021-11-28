@@ -37,22 +37,22 @@ struct PlayerView: View {
   let episode: Episode
   @State private var showPlayer = false
   @Environment(\.verticalSizeClass) var vSizeClass
-
+  
   private func height9(to16 width: CGFloat) -> CGFloat {
     return (width - 20.0) * 9.0 / 16.0
   }
-
+  
   var body: some View {
-    if let url = URL(string: episode.videoURLString) {
+    if let url = URL(string: episode.videoURL?.urlString ?? "") {
       GeometryReader { proxy in
         VStack {
           VideoPlayer(player: AVPlayer(url: url))
             .frame(
               maxHeight: vSizeClass == .regular ?
-                height9(to16: proxy.size.width) : .infinity)
+              height9(to16: proxy.size.width) : .infinity)
             .padding(15)
             .roundedGradientBackground()
-
+          
           // Show video info in iPad or iPhone portrait orientation
           if vSizeClass == .regular {
             VStack(spacing: 16) {
@@ -63,7 +63,7 @@ struct PlayerView: View {
               HStack(spacing: 15) {
                 Text(episode.released)
                 Text(episode.domain)
-                Text(String(episode.difficulty).capitalized)
+                Text(String(episode.difficulty ?? "").capitalized)
               }
               Text(episode.description)
                 .padding(.horizontal)
@@ -75,6 +75,8 @@ struct PlayerView: View {
         .navigationTitle(episode.name)
         .navigationBarTitleDisplayMode(.inline)
       }
+    } else {
+      PlaceholderView()
     }
   }
 }
@@ -108,5 +110,19 @@ extension View {
           endPoint: .trailing)
       )
       .cornerRadius(15, corners: [.bottomLeft, .bottomRight])
+  }
+}
+
+struct PlaceholderView: View {
+  var body: some View {
+    Text("""
+Placeholder episode
+No Video
+""")
+      .font(.title)
+      .multilineTextAlignment(.center)
+      .padding(15)
+      .roundedGradientBackground()
+    Spacer()
   }
 }

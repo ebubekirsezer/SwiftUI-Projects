@@ -34,7 +34,7 @@ import SwiftUI
 
 struct ContentView: View {
   
-  @StateObject private var store = EpisodeStore()
+  @EnvironmentObject var store: EpisodeStore
   @State private var showFilters = false
   
   var body: some View {
@@ -42,7 +42,12 @@ struct ContentView: View {
       VStack {
         List {
           HeaderView(count: store.episodes.count)
-          ForEach(store.episodes, id: \.name) { episode in
+          
+          if store.loading && store.episodes.isEmpty {
+            ActivityIndicator()
+          }
+          
+          ForEach(store.episodes) { episode in
             ZStack {
               NavigationLink(destination: PlayerView(episode: episode)) {
                 EmptyView()
@@ -60,6 +65,7 @@ struct ContentView: View {
             .padding([.trailing, .leading], 20)
             .background(Color.listBkgd)
           }
+          .redacted(reason: store.loading ? .placeholder : [])
         }
       }
       .navigationTitle("Videos")
@@ -75,6 +81,7 @@ struct ContentView: View {
       })
       .sheet(isPresented: $showFilters) {
         FilterOptionsView()
+          .environmentObject(store)
       }
     }
     .navigationViewStyle(StackNavigationViewStyle())

@@ -30,57 +30,14 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Foundation
 
-struct EpisodeView: View {
-  
-  @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
-  @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-  
-  var isIPad: Bool {
-    horizontalSizeClass == .regular && verticalSizeClass == .regular
-  }
-  
-  let episode: Episode
-
-  var body: some View {
-    HStack(alignment: .top, spacing: 0) {
-      PlayButtonIcon(width: 40, height: 40, radius: 6)
-        .unredacted()
-      VStack(alignment: .leading, spacing: 6) {
-        Text(episode.name)
-          .font(.headline)
-          .fontWeight(.bold)
-          .foregroundColor(Color(UIColor.label))
-        if episode.name == "Introduction" || episode.name == "Conclusion" {
-          Text(episode.parentName ?? "")
-            .font(.subheadline)
-            .foregroundColor(Color(UIColor.label))
-            .padding(.top, -5)
-        }
-        AdaptingStack {
-          Text(episode.released + "  ")
-          Text(episode.domain + "  ")
-          Text(String(episode.difficulty ?? "").capitalized)
-        }
-        Text(episode.description)
-          .lineLimit(2)
-      }
-      .padding(.horizontal)
-      .font(.footnote)
-      .foregroundColor(Color(UIColor.systemGray))
-    }
-    .padding(10)
-    .frame(width: isIPad ? 644 : nil)
-    .background(Color.itemBkgd)
-    .cornerRadius(15)
-    .shadow(color: Color.black.opacity(0.1), radius: 10)
-  }
-}
-
-struct EpisodeView_Previews: PreviewProvider {
-  static var previews: some View {
-    EpisodeView(episode: EpisodeStore().episodes[0])
-      .previewLayout(.sizeThatFits)
+public extension URLComponents {
+  /// Maps a dictionary into `[URLQueryItem]` then assigns it to the
+  /// `queryItems` property of this `URLComponents` instance.
+  /// From [Alfian Losari's blog.](https://www.alfianlosari.com/posts/building-safe-url-in-swift-using-urlcomponents-and-urlqueryitem/)
+  /// - Parameter parameters: Dictionary of query parameter names and values
+  mutating func setQueryItems(with parameters: [String: String]) {
+    self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
   }
 }

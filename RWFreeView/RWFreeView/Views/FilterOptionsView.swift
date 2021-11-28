@@ -34,36 +34,39 @@ import SwiftUI
 
 struct FilterOptionsView: View {
   @Environment(\.presentationMode) var presentationMode
-
+  
   @State private var selected1 = false  // iOS
   @State private var selected2 = false  // Android
   @State private var selected3 = false  // Unity
   @State private var selected5 = false  // macOS
   @State private var selected8 = false  // SSS
   @State private var selected9 = false  // Flutter
-
+  
   @State private var selectedB = false  // Beginner
   @State private var selectedI = false  // Intermediate
   @State private var selectedA = false  // Advanced
-
+  
+  @EnvironmentObject var store: EpisodeStore
+  
   var body: some View {
     ZStack(alignment: .topTrailing) {
       HStack {
         Spacer()
         Button(
           action: {
+            store.fetchContents()
             presentationMode.wrappedValue.dismiss()
             // swiftlint:disable:next multiple_closures_with_trailing_closure
           }) {
-          Image(systemName: "xmark")
-            .font(.title3)
-            .foregroundColor(Color(UIColor.label))
-            .padding()
-            .background(
-              Circle().fill((Color.closeBkgd))
-          )
-        }
-        .padding([.top, .trailing])
+            Image(systemName: "xmark")
+              .font(.title3)
+              .foregroundColor(Color(UIColor.label))
+              .padding()
+              .background(
+                Circle().fill((Color.closeBkgd))
+              )
+          }
+          .padding([.top, .trailing])
       }
       VStack {
         Text("Filters")
@@ -77,20 +80,20 @@ struct FilterOptionsView: View {
               .padding(.bottom)
             VStack(alignment: .leading) {
               AdaptingStack {
-                Button("iOS & Swift") { selected1.toggle() }
-                  .buttonStyle(FilterButtonStyle(selected: selected1, width: nil))
-                Button("Android & Kotlin") { selected2.toggle() }
-                  .buttonStyle(FilterButtonStyle(selected: selected2, width: nil))
-                Button("macOS") { selected5.toggle() }
-                  .buttonStyle(FilterButtonStyle(selected: selected5, width: nil))
+                Button("iOS & Swift") { store.domainFilters["1"]!.toggle() }
+                .buttonStyle(FilterButtonStyle(selected: store.domainFilters["1"]!, width: nil))
+                Button("Android & Kotlin") { store.domainFilters["2"]!.toggle() }
+                .buttonStyle(FilterButtonStyle(selected: store.domainFilters["2"]!, width: nil))
+                Button("macOS") { store.domainFilters["5"]!.toggle() }
+                .buttonStyle(FilterButtonStyle(selected: store.domainFilters["5"]!, width: nil))
               }
               AdaptingStack {
-                Button("Server-Side Swift") { selected8.toggle() }
-                  .buttonStyle(FilterButtonStyle(selected: selected8, width: nil))
-                Button("Unity") { selected3.toggle() }
-                  .buttonStyle(FilterButtonStyle(selected: selected3, width: nil))
-                Button("Flutter") { selected9.toggle() }
-                  .buttonStyle(FilterButtonStyle(selected: selected9, width: nil))
+                Button("Server-Side Swift") { store.domainFilters["8"]!.toggle() }
+                .buttonStyle(FilterButtonStyle(selected: store.domainFilters["8"]!, width: nil))
+                Button("Unity") { store.domainFilters["3"]!.toggle() }
+                .buttonStyle(FilterButtonStyle(selected: store.domainFilters["3"]!, width: nil))
+                Button("Flutter") { store.domainFilters["9"]!.toggle() }
+                .buttonStyle(FilterButtonStyle(selected: store.domainFilters["9"]!, width: nil))
               }
               .padding(.bottom)
             }
@@ -100,21 +103,24 @@ struct FilterOptionsView: View {
               .font(.title2)
               .padding(.vertical)
             AdaptingStack {
-              Button("Beginner") { selectedB.toggle() }
-                .buttonStyle(FilterButtonStyle(selected: selectedB, width: nil))
-              Button("Intermediate") { selectedI.toggle() }
-                .buttonStyle(FilterButtonStyle(selected: selectedI, width: nil))
-              Button("Advanced") { selectedA.toggle() }
-                .buttonStyle(FilterButtonStyle(selected: selectedA, width: nil))
+              Button("Beginner") { store.difficultyFilters["beginner"]!.toggle() }
+              .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["beginner"]!, width: nil))
+              Button("Intermediate") { store.difficultyFilters["intermediate"]!.toggle() }
+              .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["intermediate"]!, width: nil))
+              Button("Advanced") { store.difficultyFilters["advanced"]!.toggle() }
+              .buttonStyle(FilterButtonStyle(selected: store.difficultyFilters["advanced"]!, width: nil))
             }
             .padding(.bottom)
           }
         }
         Spacer()
         HStack {
-          Button("Clear All") { }
-            .buttonStyle(FilterButtonStyle(selected: false, width: 160))
+          Button("Clear All") {
+            store.clearQueryFilters()
+          }
+          .buttonStyle(FilterButtonStyle(selected: false, width: 160))
           Button("Apply") {
+            store.fetchContents()
             presentationMode.wrappedValue.dismiss()
           }
           .buttonStyle(FilterButtonStyle(selected: true, width: 160))
@@ -129,7 +135,7 @@ struct FilterOptionsView: View {
 struct FilterButtonStyle: ButtonStyle {
   let selected: Bool
   let width: CGFloat?
-
+  
   func makeBody(configuration: Self.Configuration)
   -> some View {
     configuration.label
