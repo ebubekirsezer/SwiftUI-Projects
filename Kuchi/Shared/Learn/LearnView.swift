@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -32,27 +32,27 @@
 
 import SwiftUI
 
-struct ScoreView: View {
+struct LearnView: View {
     
-    @Binding var numberOfAnswered: Int
-    @Binding var numberOfQuestions: Int
+    @StateObject var learningStore = LearningStore(deck: ChallengeViewModel.challenges)
     
     var body: some View {
-        HStack {
-            Text("\(numberOfAnswered)/\(numberOfQuestions)")
-                .font(.caption)
-                .padding(4)
+        VStack {
             Spacer()
+            Text("Swipe left if you remembered"
+                 + "\nSwipe right if you didn't")
+                .font(.headline)
+            DeckView(deck: FlashDeck(from: ChallengeViewModel.challenges)) {
+                learningStore.score += 1
+            }
+            Spacer()
+            Text("Remembered \(learningStore.score)" + "/\(learningStore.deck.cards.count)")
         }
     }
 }
 
-struct ScoreView_Previews: PreviewProvider {
-    @State static var numberOfAnswered: Int = 0
-    @State static var numberOfQuestions: Int = 6
-    
+struct LearnView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreView(numberOfAnswered: $numberOfAnswered,
-                  numberOfQuestions: $numberOfQuestions)
+        LearnView()
     }
 }

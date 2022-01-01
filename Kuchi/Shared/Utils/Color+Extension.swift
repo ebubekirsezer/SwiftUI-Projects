@@ -30,29 +30,26 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import struct SwiftUI.Color
 
-struct ScoreView: View {
-    
-    @Binding var numberOfAnswered: Int
-    @Binding var numberOfQuestions: Int
-    
-    var body: some View {
-        HStack {
-            Text("\(numberOfAnswered)/\(numberOfQuestions)")
-                .font(.caption)
-                .padding(4)
-            Spacer()
-        }
+extension Color {
+    init(rgba: Int) {
+        self.init(
+            .sRGB,
+            red: Double((rgba & 0xFF000000) >> 24) / 255,
+            green: Double((rgba & 0x00FF0000) >> 16) / 255,
+            blue: Double((rgba & 0x0000FF00) >> 8) / 255,
+            opacity: Double((rgba & 0x000000FF)) / 255
+        )
     }
-}
-
-struct ScoreView_Previews: PreviewProvider {
-    @State static var numberOfAnswered: Int = 0
-    @State static var numberOfQuestions: Int = 6
     
-    static var previews: some View {
-        ScoreView(numberOfAnswered: $numberOfAnswered,
-                  numberOfQuestions: $numberOfQuestions)
+    var asRgba: Int {
+        let components = cgColor!.components!
+        let (r, g, b, a) = (components[0], components[1], components[2], components[3])
+        return
+        (Int(a * 255) << 0) +
+        (Int(b * 255) << 8) +
+        (Int(g * 255) << 16) +
+        (Int(r * 255) << 24)
     }
 }

@@ -32,27 +32,24 @@
 
 import SwiftUI
 
-struct ScoreView: View {
+enum Appearance: Int, CaseIterable, Identifiable {
+    case light, dark, automatic
     
-    @Binding var numberOfAnswered: Int
-    @Binding var numberOfQuestions: Int
+    var id: Int { self.rawValue }
     
-    var body: some View {
-        HStack {
-            Text("\(numberOfAnswered)/\(numberOfQuestions)")
-                .font(.caption)
-                .padding(4)
-            Spacer()
+    var name: String {
+        switch self {
+        case .light: return "Light"
+        case .dark: return "Dark"
+        case .automatic: return "Automatic"
         }
     }
-}
-
-struct ScoreView_Previews: PreviewProvider {
-    @State static var numberOfAnswered: Int = 0
-    @State static var numberOfQuestions: Int = 6
     
-    static var previews: some View {
-        ScoreView(numberOfAnswered: $numberOfAnswered,
-                  numberOfQuestions: $numberOfQuestions)
+    func getColorScheme() -> ColorScheme? {
+        switch self {
+        case .automatic: return nil
+        case .light: return .light
+        case .dark: return .dark
+        }
     }
 }

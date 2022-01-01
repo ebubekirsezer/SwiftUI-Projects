@@ -36,33 +36,60 @@ struct ChallengeView: View {
     
     let challengeTest: ChallengeTest
     
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @AppStorage("numberOfQuestions") var numberOfQuestions = 6
+    @Binding var numberOfAnswered: Int
     @State var showAnswers = false
     
+    @ViewBuilder
     var body: some View {
-        VStack {
-            Button {
-                showAnswers.toggle()
-            } label: {
-                QuestionView(question: challengeTest.challenge.question)
-                    .frame(height: 300)
-            }
+        
+        if verticalSizeClass == .compact {
             
-            ScoreView(numberOfQuestions: 5)
-            
-            if showAnswers {
-                Divider()
+            VStack {
+                HStack {
+                    Button {
+                        showAnswers = !showAnswers
+                    } label: {
+                        QuestionView(question: challengeTest.challenge.question)
+                    }
+                    
+                    if showAnswers {
+                        Divider()
+                        ChoicesView(challengeTest: challengeTest)
+                    }
+                }
                 
-                ChoicesView(challengeTest: challengeTest)
-                    .frame(height: 300)
-                    .padding()
+                ScoreView(numberOfAnswered: $numberOfAnswered,
+                          numberOfQuestions: $numberOfQuestions)
             }
-
+            
+        } else {
+            VStack {
+                Button {
+                    showAnswers = !showAnswers
+                } label: {
+                    QuestionView(question: challengeTest.challenge.question)
+                        .frame(height: 300)
+                }
+                
+                ScoreView(numberOfAnswered: $numberOfAnswered,
+                          numberOfQuestions: $numberOfQuestions)
+                
+                if showAnswers {
+                    Divider()
+                    ChoicesView(challengeTest: challengeTest)
+                        .frame(height: 300)
+                        .padding()
+                }
+            }
         }
-
     }
 }
 
 struct ChallengeView_Previews: PreviewProvider {
+    
+    @State static var numberOfAnswered: Int = 0
     
     static let challengeTest = ChallengeTest(
       challenge: Challenge(
@@ -74,6 +101,7 @@ struct ChallengeView_Previews: PreviewProvider {
     )
     
     static var previews: some View {
-        return ChallengeView(challengeTest: challengeTest)
+        return ChallengeView(challengeTest: challengeTest, numberOfAnswered: $numberOfAnswered)
+.previewInterfaceOrientation(.portrait)
     }
 }

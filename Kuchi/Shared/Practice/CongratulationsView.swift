@@ -34,7 +34,7 @@ import SwiftUI
 
 struct CongratulationsView: View {
     
-    @ObservedObject var challengesViewModel = ChallengeViewModel()
+    @EnvironmentObject var challengesViewModel: ChallengeViewModel
     
     let avatarSize: CGFloat = 120
     let userName: String
@@ -44,7 +44,7 @@ struct CongratulationsView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack() {
             Spacer()
             
             Text("Congratulations")
@@ -80,7 +80,7 @@ struct CongratulationsView: View {
                 }
                 .padding()
             }
-            .frame(height: 100)
+            .frame(height: 180)
             
             Text("You're awesome!")
                 .fontWeight(.bold)

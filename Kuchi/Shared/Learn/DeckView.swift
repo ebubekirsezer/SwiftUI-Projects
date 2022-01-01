@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -32,27 +32,59 @@
 
 import SwiftUI
 
-struct ScoreView: View {
+enum DiscardedDirection {
+    case left
+    case right
+}
+
+struct DeckView: View {
     
-    @Binding var numberOfAnswered: Int
-    @Binding var numberOfQuestions: Int
+    @ObservedObject var deck: FlashDeck
+    @AppStorage("cardBackgroundColor")
+    var cardBackgroundColorInt: Int = 0xFF0000FF
+    let onMemorized: () -> Void
+    
+    init(deck: FlashDeck, onMemorized: @escaping () -> Void) {
+        self.onMemorized = onMemorized
+        self.deck = deck
+    }
     
     var body: some View {
-        HStack {
-            Text("\(numberOfAnswered)/\(numberOfQuestions)")
-                .font(.caption)
-                .padding(4)
-            Spacer()
+        ZStack {
+            ForEach(deck.cards.filter { $0.isActive }) { card in
+                getCardView(for: card)
+            }
         }
+    }
+    
+    func getCardView(for card: FlashCard) -> CardView {
+        let activeCards = deck.cards.filter { $0.isActive }
+        if let lastCard = activeCards.last {
+            if lastCard == card {
+                return createCardView(for: lastCard)
+            }
+        }
+        
+        let view = createCardView(for: card)
+        return view
+    }
+    
+    func createCardView(for card: FlashCard) -> CardView {
+        let view = CardView(card,
+                            cardColor: Binding(
+            get: { Color(rgba: cardBackgroundColorInt) },
+            set: { newValue in cardBackgroundColorInt = newValue.asRgba })) { card, direction in
+                if direction == .left {
+                    onMemorized()
+                }
+            }
+        return view
     }
 }
 
-struct ScoreView_Previews: PreviewProvider {
-    @State static var numberOfAnswered: Int = 0
-    @State static var numberOfQuestions: Int = 6
-    
+struct DeckView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreView(numberOfAnswered: $numberOfAnswered,
-                  numberOfQuestions: $numberOfQuestions)
+        DeckView(deck: FlashDeck(from: ChallengeViewModel.challenges),
+                 onMemorized: { })
     }
 }

@@ -36,7 +36,7 @@ struct ChoicesView: View {
     let challengeTest: ChallengeTest
     @State var challengeSolved = false
     @State var isChallengeResultAlertDisplayed = false
-    @ObservedObject var challengesViewModel = ChallengeViewModel()
+    @EnvironmentObject var challengesViewModel: ChallengeViewModel
     
     var body: some View {
         VStack(spacing: 25) {
@@ -86,7 +86,7 @@ struct ChoicesView: View {
         
         if challengeTest.isAnswerCorrect(answer) {
             challengeSolved = true
-            challengesViewModel.saveWrongAnswer(for: challengeTest.challenge)
+            challengesViewModel.saveCorrectAnswer(for: challengeTest.challenge)
         } else {
             challengeSolved = false
             challengesViewModel.saveWrongAnswer(for: challengeTest.challenge)

@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,29 +30,27 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Foundation
 
-struct ScoreView: View {
+class LearningStore: ObservableObject {
     
-    @Binding var numberOfAnswered: Int
-    @Binding var numberOfQuestions: Int
+    @Published var deck: FlashDeck
+    @Published var card: FlashCard?
+    @Published var score = 0
     
-    var body: some View {
-        HStack {
-            Text("\(numberOfAnswered)/\(numberOfQuestions)")
-                .font(.caption)
-                .padding(4)
-            Spacer()
-        }
+    init(deck: [Challenge]) {
+        self.deck = FlashDeck(from: deck)
+        self.card = getNextCard()
     }
-}
-
-struct ScoreView_Previews: PreviewProvider {
-    @State static var numberOfAnswered: Int = 0
-    @State static var numberOfQuestions: Int = 6
     
-    static var previews: some View {
-        ScoreView(numberOfAnswered: $numberOfAnswered,
-                  numberOfQuestions: $numberOfQuestions)
+    func getNextCard() -> FlashCard? {
+        guard let card = deck.cards.last else {
+            return nil
+        }
+        
+        self.card = card
+        deck.cards.removeLast()
+        
+        return self.card
     }
 }

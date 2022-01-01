@@ -1,4 +1,4 @@
-/// Copyright (c) 2021 Razeware LLC
+/// Copyright (c) 2022 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -30,29 +30,17 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import SwiftUI
+import Foundation
 
-struct ScoreView: View {
-    
-    @Binding var numberOfAnswered: Int
-    @Binding var numberOfQuestions: Int
-    
-    var body: some View {
-        HStack {
-            Text("\(numberOfAnswered)/\(numberOfQuestions)")
-                .font(.caption)
-                .padding(4)
-            Spacer()
-        }
-    }
+struct FlashCard: Identifiable {
+    let id = UUID()
+    var card: Challenge
+    var isActive = true
 }
 
-struct ScoreView_Previews: PreviewProvider {
-    @State static var numberOfAnswered: Int = 0
-    @State static var numberOfQuestions: Int = 6
+extension FlashCard: Equatable {
     
-    static var previews: some View {
-        ScoreView(numberOfAnswered: $numberOfAnswered,
-                  numberOfQuestions: $numberOfQuestions)
+    static func ==(lhs: FlashCard, rhs: FlashCard) -> Bool {
+        return lhs.card.question == rhs.card.question && lhs.card.answer == rhs.card.answer
     }
 }
