@@ -18,6 +18,7 @@
 		CF42979D2763E902009B8D0C /* BevelText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF42979C2763E902009B8D0C /* BevelText.swift */; };
 		CF683A13276146FE00135B37 /* ColorCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF683A12276146FE00135B37 /* ColorCircle.swift */; };
 		CF683A152761480000135B37 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF683A142761480000135B37 /* ViewExtension.swift */; };
+		CFC39C7127807D87003360D9 /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC39C7027807D87003360D9 /* SuccessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		CF42979C2763E902009B8D0C /* BevelText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BevelText.swift; sourceTree = "<group>"; };
 		CF683A12276146FE00135B37 /* ColorCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCircle.swift; sourceTree = "<group>"; };
 		CF683A142761480000135B37 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		CFC39C7027807D87003360D9 /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				CF683A12276146FE00135B37 /* ColorCircle.swift */,
 				CF683A142761480000135B37 /* ViewExtension.swift */,
 				CF4297982763E740009B8D0C /* NewButtonStyle.swift */,
+				CFC39C7027807D87003360D9 /* SuccessView.swift */,
 				CF42979C2763E902009B8D0C /* BevelText.swift */,
 				CD405EFC2536AA700062B1CC /* ContentView.swift */,
 				CDF08BAC253E84F10061DB4A /* Model */,
@@ -191,6 +194,7 @@
 			files = (
 				CD405EFD2536AA700062B1CC /* ContentView.swift in Sources */,
 				CD25DEBF253C26A200A218D4 /* Game.swift in Sources */,
+				CFC39C7127807D87003360D9 /* SuccessView.swift in Sources */,
 				CF42979D2763E902009B8D0C /* BevelText.swift in Sources */,
 				CD405EFB2536AA700062B1CC /* RGBullsEyeApp.swift in Sources */,
 				CF683A152761480000135B37 /* ViewExtension.swift in Sources */,
