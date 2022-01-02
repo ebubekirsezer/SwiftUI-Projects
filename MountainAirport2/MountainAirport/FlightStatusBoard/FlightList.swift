@@ -39,12 +39,24 @@ struct FlightList: View {
         
         return flight.id
     }
+    @Binding var highlightedIds: [Int]
+    
+    func rowHighlighted(_ flightId: Int) -> Bool {
+        return highlightedIds.contains { $0 == flightId }
+    }
     
     var body: some View {
         ScrollViewReader { scrollProxy in
             List(flights) { flight in
                 NavigationLink(destination: FlightDetails(flight: flight)) {
                     FlightRow(flight: flight)
+                }
+                .listRowBackground(
+                    rowHighlighted(flight.id) ? Color.yellow.opacity(0.6) : Color.clear
+                )
+                .swipeActions(edge: .leading) {
+                    HighlightActionView(flightId: flight.id,
+                                        highlightedIds: $highlightedIds)
                 }
             } //: List
             .onAppear {
@@ -60,7 +72,8 @@ struct FlightList_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             FlightList(
-                flights: FlightData.generateTestFlights(date: Date())
+                flights: FlightData.generateTestFlights(date: Date()),
+                highlightedIds: .constant([15])
             )
         }
     }
