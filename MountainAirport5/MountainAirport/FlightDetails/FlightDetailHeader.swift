@@ -1,4 +1,4 @@
-/// Copyright (c) 2022 Razeware LLC
+/// Copyright (c) 2020 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -17,48 +17,41 @@
 /// or information technology.  Permission for such use, copying, modification,
 /// merger, publication, distribution, sublicensing, creation of derivative works,
 /// or sale is expressly withheld.
-/// 
+///
+/// This project and source code may use libraries or frameworks that are
+/// released under various Open-Source licenses. Use of those libraries and
+/// frameworks are governed by their own individual licenses.
+///
 /// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 /// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 /// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CL AIM, DAMAGES OR OTHER
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 /// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
 import SwiftUI
 
-struct WelcomeAnimation: View {
-    
-    private var startTime = Date()
-    private let animationLength = 5.0
-    
-    var body: some View {
-        TimelineView(.animation) { timelineContext in
-            Canvas { graphicContext, size in
-                
-                guard let planeSymbol = graphicContext.resolveSymbol(id: 0) else { return }
-                
-                let timePosition = (timelineContext.date.timeIntervalSince(startTime))
-                    .truncatingRemainder(dividingBy: animationLength)
-                
-                let xPosition = timePosition / animationLength * size.width
-                
-                graphicContext.draw(planeSymbol,
-                                    at: .init(x: xPosition, y: size.height / 2))
-            } symbols: {
-                Image(systemName: "airplane")
-                    .resizable()
-                    .aspectRatio(1.0, contentMode: .fit)
-                    .frame(height: 40)
-                    .tag(0)
-            }
-        }
+struct FlightDetailHeader: View {
+  var flight: FlightInformation
+
+  var body: some View {
+    HStack {
+      FlightStatusIcon(flight: flight)
+        .frame(width: 40, height: 40)
+      VStack(alignment: .leading) {
+        Text("\(flight.dirString) \(flight.otherAirport)")
+        Text(flight.flightStatus)
+          .font(.subheadline)
+      }.font(.title2)
     }
+  }
 }
 
-struct WelcomeAnimation_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeAnimation()
-    }
+struct FlightDetailHeader_Previews: PreviewProvider {
+  static var previews: some View {
+    FlightDetailHeader(
+      flight: FlightData.generateTestFlight(date: Date())
+    )
+  }
 }
