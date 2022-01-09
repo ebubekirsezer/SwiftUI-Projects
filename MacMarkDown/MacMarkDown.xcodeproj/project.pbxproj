@@ -1,0 +1,426 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CF2EFDDF278A17F700B68890 /* MacMarkDownApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EFDDE278A17F700B68890 /* MacMarkDownApp.swift */; };
+		CF2EFDE1278A17F700B68890 /* MacMarkDownDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EFDE0278A17F700B68890 /* MacMarkDownDocument.swift */; };
+		CF2EFDE3278A17F700B68890 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EFDE2278A17F700B68890 /* ContentView.swift */; };
+		CF2EFDE5278A17F900B68890 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF2EFDE4278A17F900B68890 /* Assets.xcassets */; };
+		CF2EFDE8278A17F900B68890 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF2EFDE7278A17F900B68890 /* Preview Assets.xcassets */; };
+		CF7ED9A2278A1DFF00ABC30F /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = CF7ED9A1278A1DFF00ABC30F /* MarkdownKit */; };
+		CF7ED9A4278A1E7F00ABC30F /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7ED9A3278A1E7F00ABC30F /* WebView.swift */; };
+		CF7ED9A6278A24AF00ABC30F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7ED9A5278A24AF00ABC30F /* SettingsView.swift */; };
+		CF7ED9A8278A269700ABC30F /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7ED9A7278A269700ABC30F /* MenuCommands.swift */; };
+		CF7ED9B2278AD0E300ABC30F /* solarizeddark.css in Resources */ = {isa = PBXBuildFile; fileRef = CF7ED9AC278AD0E300ABC30F /* solarizeddark.css */; };
+		CF7ED9B3278AD0E300ABC30F /* raywenderlich.css in Resources */ = {isa = PBXBuildFile; fileRef = CF7ED9AD278AD0E300ABC30F /* raywenderlich.css */; };
+		CF7ED9B4278AD0E300ABC30F /* lopash.css in Resources */ = {isa = PBXBuildFile; fileRef = CF7ED9AE278AD0E300ABC30F /* lopash.css */; };
+		CF7ED9B5278AD0E300ABC30F /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = CF7ED9AF278AD0E300ABC30F /* github.css */; };
+		CF7ED9B6278AD0E300ABC30F /* StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7ED9B0278AD0E300ABC30F /* StyleSheet.swift */; };
+		CF7ED9B7278AD0E300ABC30F /* ulysses.css in Resources */ = {isa = PBXBuildFile; fileRef = CF7ED9B1278AD0E300ABC30F /* ulysses.css */; };
+		CF7ED9B9278AD4E600ABC30F /* ToolbarCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7ED9B8278AD4E600ABC30F /* ToolbarCommands.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CF2EFDDB278A17F700B68890 /* MacMarkDown.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacMarkDown.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF2EFDDE278A17F700B68890 /* MacMarkDownApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMarkDownApp.swift; sourceTree = "<group>"; };
+		CF2EFDE0278A17F700B68890 /* MacMarkDownDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacMarkDownDocument.swift; sourceTree = "<group>"; };
+		CF2EFDE2278A17F700B68890 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		CF2EFDE4278A17F900B68890 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CF2EFDE7278A17F900B68890 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CF2EFDE9278A17F900B68890 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF2EFDEA278A17F900B68890 /* MacMarkDown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacMarkDown.entitlements; sourceTree = "<group>"; };
+		CF7ED9A3278A1E7F00ABC30F /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		CF7ED9A5278A24AF00ABC30F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CF7ED9A7278A269700ABC30F /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
+		CF7ED9AC278AD0E300ABC30F /* solarizeddark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = solarizeddark.css; sourceTree = "<group>"; };
+		CF7ED9AD278AD0E300ABC30F /* raywenderlich.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = raywenderlich.css; sourceTree = "<group>"; };
+		CF7ED9AE278AD0E300ABC30F /* lopash.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = lopash.css; sourceTree = "<group>"; };
+		CF7ED9AF278AD0E300ABC30F /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
+		CF7ED9B0278AD0E300ABC30F /* StyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleSheet.swift; sourceTree = "<group>"; };
+		CF7ED9B1278AD0E300ABC30F /* ulysses.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ulysses.css; sourceTree = "<group>"; };
+		CF7ED9B8278AD4E600ABC30F /* ToolbarCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarCommands.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CF2EFDD8278A17F700B68890 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7ED9A2278A1DFF00ABC30F /* MarkdownKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CF2EFDD2278A17F700B68890 = {
+			isa = PBXGroup;
+			children = (
+				CF2EFDDD278A17F700B68890 /* MacMarkDown */,
+				CF2EFDDC278A17F700B68890 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CF2EFDDC278A17F700B68890 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EFDDB278A17F700B68890 /* MacMarkDown.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CF2EFDDD278A17F700B68890 /* MacMarkDown */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EFDDE278A17F700B68890 /* MacMarkDownApp.swift */,
+				CF2EFDE0278A17F700B68890 /* MacMarkDownDocument.swift */,
+				CF7ED9A3278A1E7F00ABC30F /* WebView.swift */,
+				CF2EFDE2278A17F700B68890 /* ContentView.swift */,
+				CF7ED9B8278AD4E600ABC30F /* ToolbarCommands.swift */,
+				CF7ED9A7278A269700ABC30F /* MenuCommands.swift */,
+				CF7ED9A5278A24AF00ABC30F /* SettingsView.swift */,
+				CF7ED9AB278AD0B500ABC30F /* StyleSheets */,
+				CF2EFDE4278A17F900B68890 /* Assets.xcassets */,
+				CF2EFDE9278A17F900B68890 /* Info.plist */,
+				CF2EFDEA278A17F900B68890 /* MacMarkDown.entitlements */,
+				CF2EFDE6278A17F900B68890 /* Preview Content */,
+			);
+			path = MacMarkDown;
+			sourceTree = "<group>";
+		};
+		CF2EFDE6278A17F900B68890 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CF2EFDE7278A17F900B68890 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CF7ED9AB278AD0B500ABC30F /* StyleSheets */ = {
+			isa = PBXGroup;
+			children = (
+				CF7ED9AF278AD0E300ABC30F /* github.css */,
+				CF7ED9AE278AD0E300ABC30F /* lopash.css */,
+				CF7ED9AD278AD0E300ABC30F /* raywenderlich.css */,
+				CF7ED9AC278AD0E300ABC30F /* solarizeddark.css */,
+				CF7ED9B0278AD0E300ABC30F /* StyleSheet.swift */,
+				CF7ED9B1278AD0E300ABC30F /* ulysses.css */,
+			);
+			path = StyleSheets;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CF2EFDDA278A17F700B68890 /* MacMarkDown */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF2EFDED278A17F900B68890 /* Build configuration list for PBXNativeTarget "MacMarkDown" */;
+			buildPhases = (
+				CF2EFDD7278A17F700B68890 /* Sources */,
+				CF2EFDD8278A17F700B68890 /* Frameworks */,
+				CF2EFDD9278A17F700B68890 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacMarkDown;
+			packageProductDependencies = (
+				CF7ED9A1278A1DFF00ABC30F /* MarkdownKit */,
+			);
+			productName = MacMarkDown;
+			productReference = CF2EFDDB278A17F700B68890 /* MacMarkDown.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CF2EFDD3278A17F700B68890 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					CF2EFDDA278A17F700B68890 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = CF2EFDD6278A17F700B68890 /* Build configuration list for PBXProject "MacMarkDown" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF2EFDD2278A17F700B68890;
+			packageReferences = (
+				CF7ED9A0278A1DFF00ABC30F /* XCRemoteSwiftPackageReference "swift-markdownkit" */,
+			);
+			productRefGroup = CF2EFDDC278A17F700B68890 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CF2EFDDA278A17F700B68890 /* MacMarkDown */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF2EFDD9278A17F700B68890 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7ED9B5278AD0E300ABC30F /* github.css in Resources */,
+				CF7ED9B7278AD0E300ABC30F /* ulysses.css in Resources */,
+				CF7ED9B2278AD0E300ABC30F /* solarizeddark.css in Resources */,
+				CF7ED9B3278AD0E300ABC30F /* raywenderlich.css in Resources */,
+				CF7ED9B4278AD0E300ABC30F /* lopash.css in Resources */,
+				CF2EFDE8278A17F900B68890 /* Preview Assets.xcassets in Resources */,
+				CF2EFDE5278A17F900B68890 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CF2EFDD7278A17F700B68890 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF7ED9A6278A24AF00ABC30F /* SettingsView.swift in Sources */,
+				CF2EFDDF278A17F700B68890 /* MacMarkDownApp.swift in Sources */,
+				CF7ED9A8278A269700ABC30F /* MenuCommands.swift in Sources */,
+				CF7ED9A4278A1E7F00ABC30F /* WebView.swift in Sources */,
+				CF2EFDE1278A17F700B68890 /* MacMarkDownDocument.swift in Sources */,
+				CF7ED9B9278AD4E600ABC30F /* ToolbarCommands.swift in Sources */,
+				CF2EFDE3278A17F700B68890 /* ContentView.swift in Sources */,
+				CF7ED9B6278AD0E300ABC30F /* StyleSheet.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CF2EFDEB278A17F900B68890 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CF2EFDEC278A17F900B68890 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		CF2EFDEE278A17F900B68890 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacMarkDown/MacMarkDown.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacMarkDown/Preview Content\"";
+				DEVELOPMENT_TEAM = 4K2NLU38QM;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacMarkDown/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebubekirsezer.MacMarkDown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CF2EFDEF278A17F900B68890 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacMarkDown/MacMarkDown.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MacMarkDown/Preview Content\"";
+				DEVELOPMENT_TEAM = 4K2NLU38QM;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacMarkDown/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ebubekirsezer.MacMarkDown;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CF2EFDD6278A17F700B68890 /* Build configuration list for PBXProject "MacMarkDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF2EFDEB278A17F900B68890 /* Debug */,
+				CF2EFDEC278A17F900B68890 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF2EFDED278A17F900B68890 /* Build configuration list for PBXNativeTarget "MacMarkDown" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF2EFDEE278A17F900B68890 /* Debug */,
+				CF2EFDEF278A17F900B68890 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CF7ED9A0278A1DFF00ABC30F /* XCRemoteSwiftPackageReference "swift-markdownkit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/objecthub/swift-markdownkit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CF7ED9A1278A1DFF00ABC30F /* MarkdownKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF7ED9A0278A1DFF00ABC30F /* XCRemoteSwiftPackageReference "swift-markdownkit" */;
+			productName = MarkdownKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = CF2EFDD3278A17F700B68890 /* Project object */;
+}
