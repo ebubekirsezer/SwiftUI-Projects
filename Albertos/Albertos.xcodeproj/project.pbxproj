@@ -14,6 +14,11 @@
 		3FC9D8C3256238A000BF115D /* AlbertosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC9D8C2256238A000BF115D /* AlbertosTests.swift */; };
 		3FC9D8CE256238A000BF115D /* AlbertosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC9D8CD256238A000BF115D /* AlbertosUITests.swift */; };
 		CF0D971227942DEF00DA3494 /* MenuSection+Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D971127942DEF00DA3494 /* MenuSection+Fixture.swift */; };
+		CF0D9714279431FF00DA3494 /* MenuRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D9713279431FF00DA3494 /* MenuRow.swift */; };
+		CF0D97162794329A00DA3494 /* MenuRowViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D97152794329A00DA3494 /* MenuRowViewModelTests.swift */; };
+		CF0D97182794336400DA3494 /* MenuRow+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D97172794336400DA3494 /* MenuRow+ViewModel.swift */; };
+		CF0D971A279436B800DA3494 /* MenuListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D9719279436B800DA3494 /* MenuListViewModelTests.swift */; };
+		CF0D971C27943DB100DA3494 /* MenuList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D971B27943DB100DA3494 /* MenuList+ViewModel.swift */; };
 		CF9E687C2790AC360015C88C /* MenuGroupingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9E687B2790AC360015C88C /* MenuGroupingTests.swift */; };
 		CF9E687E2790AD480015C88C /* MenuGrouping.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9E687D2790AD480015C88C /* MenuGrouping.swift */; };
 		CF9E68802790AD960015C88C /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9E687F2790AD960015C88C /* MenuItem.swift */; };
@@ -54,6 +59,11 @@
 		3FC9D8CD256238A000BF115D /* AlbertosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbertosUITests.swift; sourceTree = "<group>"; };
 		3FC9D8CF256238A000BF115D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF0D971127942DEF00DA3494 /* MenuSection+Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuSection+Fixture.swift"; sourceTree = "<group>"; };
+		CF0D9713279431FF00DA3494 /* MenuRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRow.swift; sourceTree = "<group>"; };
+		CF0D97152794329A00DA3494 /* MenuRowViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuRowViewModelTests.swift; sourceTree = "<group>"; };
+		CF0D97172794336400DA3494 /* MenuRow+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuRow+ViewModel.swift"; sourceTree = "<group>"; };
+		CF0D9719279436B800DA3494 /* MenuListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModelTests.swift; sourceTree = "<group>"; };
+		CF0D971B27943DB100DA3494 /* MenuList+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuList+ViewModel.swift"; sourceTree = "<group>"; };
 		CF9E687B2790AC360015C88C /* MenuGroupingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGroupingTests.swift; sourceTree = "<group>"; };
 		CF9E687D2790AD480015C88C /* MenuGrouping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGrouping.swift; sourceTree = "<group>"; };
 		CF9E687F2790AD960015C88C /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
@@ -118,7 +128,10 @@
 				3FC9D8B92562389F00BF115D /* Info.plist */,
 				CF9E687D2790AD480015C88C /* MenuGrouping.swift */,
 				CF9E687F2790AD960015C88C /* MenuItem.swift */,
+				CF0D971B27943DB100DA3494 /* MenuList+ViewModel.swift */,
 				CF9E68852790B7850015C88C /* MenuList.swift */,
+				CF0D97172794336400DA3494 /* MenuRow+ViewModel.swift */,
+				CF0D9713279431FF00DA3494 /* MenuRow.swift */,
 				CF9E68812790ADA70015C88C /* MenuSection.swift */,
 				3FC9D8B62562389F00BF115D /* Preview Content */,
 			);
@@ -140,6 +153,8 @@
 				3FC9D8C4256238A000BF115D /* Info.plist */,
 				CF9E687B2790AC360015C88C /* MenuGroupingTests.swift */,
 				CF9E689527942ABE0015C88C /* MenuItem+Fixture.swift */,
+				CF0D9719279436B800DA3494 /* MenuListViewModelTests.swift */,
+				CF0D97152794329A00DA3494 /* MenuRowViewModelTests.swift */,
 				CF0D971127942DEF00DA3494 /* MenuSection+Fixture.swift */,
 			);
 			path = AlbertosTests;
@@ -310,7 +325,10 @@
 				3FC9D8B32562389E00BF115D /* ContentView.swift in Sources */,
 				CF9E687E2790AD480015C88C /* MenuGrouping.swift in Sources */,
 				CF9E68802790AD960015C88C /* MenuItem.swift in Sources */,
+				CF0D971C27943DB100DA3494 /* MenuList+ViewModel.swift in Sources */,
 				CF9E68862790B7850015C88C /* MenuList.swift in Sources */,
+				CF0D97182794336400DA3494 /* MenuRow+ViewModel.swift in Sources */,
+				CF0D9714279431FF00DA3494 /* MenuRow.swift in Sources */,
 				CF9E68822790ADA70015C88C /* MenuSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +340,8 @@
 				3FC9D8C3256238A000BF115D /* AlbertosTests.swift in Sources */,
 				CF9E687C2790AC360015C88C /* MenuGroupingTests.swift in Sources */,
 				CF9E689627942ABE0015C88C /* MenuItem+Fixture.swift in Sources */,
+				CF0D971A279436B800DA3494 /* MenuListViewModelTests.swift in Sources */,
+				CF0D97162794329A00DA3494 /* MenuRowViewModelTests.swift in Sources */,
 				CF0D971227942DEF00DA3494 /* MenuSection+Fixture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
