@@ -22,10 +22,10 @@ class MenuGroupingTests: XCTestCase {
     ///  /// sections, in reverse alphabetical order
     func testMenuWithManyCategoriesReturnsAsManySectionsInReverseAlphabeticalOrder() {
         let menu = [
-            MenuItem(category: "pastas", name: "a pasta"),
-            MenuItem(category: "drinks", name: "a drink"),
-            MenuItem(category: "pastas", name: "another pasta"),
-            MenuItem(category: "desserts", name: "a dessert")
+            MenuItem.fixture(category: "pastas"),
+            MenuItem.fixture(category: "drinks"),
+            MenuItem.fixture(category: "pastas"),
+            MenuItem.fixture(category: "desserts")
         ]
         let sections = groupMenuByCategory(menu)
         XCTAssertEqual(sections.count, 3)
@@ -37,8 +37,8 @@ class MenuGroupingTests: XCTestCase {
     
     func testMenuWithOneCategoryReturnsOneSection() throws {
         let menu = [
-            MenuItem(category: "pastas", name: "name"),
-            MenuItem(category: "pastas", name: "other name")
+            MenuItem.fixture(category: "pastas", name: "name"),
+            MenuItem.fixture(category: "pastas", name: "other name")
         ]
         let sections = groupMenuByCategory(menu)
         
