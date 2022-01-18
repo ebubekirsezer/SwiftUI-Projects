@@ -11,23 +11,31 @@ struct MenuList: View {
     @ObservedObject var viewModel: ViewModel
     
     var body: some View {
-        List {
-            ForEach(viewModel.sections) { section in
-                Section {
-                    ForEach(section.items) { item in
-                        MenuRow(viewModel: .init(item: item))
-                    }
-                } header: {
-                    Text(section.category)
+        
+        switch viewModel.sections {
+        case .success(let sections):
+            List {
+                ForEach(sections) { section in
+                    Section(content: {
+                        ForEach(section.items) { item in
+                            MenuRow(viewModel: .init(item: item))
+                        }
+                    }, header: {
+                        Text(section.category)
+                    })
                 }
-
             }
+        case .failure(let error):
+            Text("An error occurred:")
+            Text(error.localizedDescription).italic()
         }
+        
+        
     }
 }
-
-struct MenuList_Previews: PreviewProvider {
-    static var previews: some View {
-        MenuList(viewModel: .init(menuFetching: MenuFetchingPlaceholder()))
-    }
-}
+//
+//struct MenuList_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MenuList(viewModel: .init(menuFetching: MenuFetchingPlaceholder()))
+//    }
+//}
