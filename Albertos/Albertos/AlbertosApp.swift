@@ -13,12 +13,16 @@ let menu = [
 
 @main
 struct AlbertosApp: App {
+    
+    let orderController = OrderController()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 MenuList(viewModel: .init(menuFetching: MenuFetchingPlaceholder()))
                     .navigationTitle("Alberto's 🇮🇹")
             }
+            .environmentObject(orderController)
         }
     }
     

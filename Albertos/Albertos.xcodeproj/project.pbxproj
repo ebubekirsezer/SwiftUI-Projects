@@ -42,6 +42,16 @@
 		CFCC76A72799F24F00D078A5 /* NetworkFetching.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC76A62799F24F00D078A5 /* NetworkFetching.swift */; };
 		CFCC76A92799F28E00D078A5 /* URLSession+NetworkFetching.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC76A82799F28E00D078A5 /* URLSession+NetworkFetching.swift.swift */; };
 		CFCC76AB2799F39B00D078A5 /* NetworkFetchingStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCC76AA2799F39B00D078A5 /* NetworkFetchingStub.swift */; };
+		CFFEB680279C2BD800384184 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB67F279C2BD800384184 /* Order.swift */; };
+		CFFEB682279C2BFE00384184 /* OrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB681279C2BFE00384184 /* OrderController.swift */; };
+		CFFEB684279C2CB800384184 /* OrderButton+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB683279C2CB800384184 /* OrderButton+ViewModel.swift */; };
+		CFFEB686279C2CE400384184 /* OrderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB685279C2CE400384184 /* OrderButton.swift */; };
+		CFFEB688279C2E3500384184 /* OrderDetail+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB687279C2E3500384184 /* OrderDetail+ViewModel.swift */; };
+		CFFEB68A279C2E5900384184 /* OrderDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB689279C2E5900384184 /* OrderDetail.swift */; };
+		CFFEB68C279C2E9000384184 /* Color+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB68B279C2E9000384184 /* Color+Custom.swift */; };
+		CFFEB68E279C306500384184 /* MenuItemDetail+ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB68D279C306500384184 /* MenuItemDetail+ViewModelTests.swift */; };
+		CFFEB690279C319800384184 /* MenuItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB68F279C319800384184 /* MenuItemDetail.swift */; };
+		CFFEB692279C31DC00384184 /* MenuItemDetail+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFFEB691279C31DC00384184 /* MenuItemDetail+ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +113,16 @@
 		CFCC76A62799F24F00D078A5 /* NetworkFetching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetching.swift; sourceTree = "<group>"; };
 		CFCC76A82799F28E00D078A5 /* URLSession+NetworkFetching.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkFetching.swift.swift"; sourceTree = "<group>"; };
 		CFCC76AA2799F39B00D078A5 /* NetworkFetchingStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFetchingStub.swift; sourceTree = "<group>"; };
+		CFFEB67F279C2BD800384184 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		CFFEB681279C2BFE00384184 /* OrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderController.swift; sourceTree = "<group>"; };
+		CFFEB683279C2CB800384184 /* OrderButton+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderButton+ViewModel.swift"; sourceTree = "<group>"; };
+		CFFEB685279C2CE400384184 /* OrderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderButton.swift; sourceTree = "<group>"; };
+		CFFEB687279C2E3500384184 /* OrderDetail+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrderDetail+ViewModel.swift"; sourceTree = "<group>"; };
+		CFFEB689279C2E5900384184 /* OrderDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetail.swift; sourceTree = "<group>"; };
+		CFFEB68B279C2E9000384184 /* Color+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Custom.swift"; sourceTree = "<group>"; };
+		CFFEB68D279C306500384184 /* MenuItemDetail+ViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemDetail+ViewModelTests.swift"; sourceTree = "<group>"; };
+		CFFEB68F279C319800384184 /* MenuItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemDetail.swift; sourceTree = "<group>"; };
+		CFFEB691279C31DC00384184 /* MenuItemDetail+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MenuItemDetail+ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +176,7 @@
 				3FC9D8B02562389E00BF115D /* AlbertosApp.swift */,
 				3FC9D8B42562389F00BF115D /* Assets.xcassets */,
 				CF9E68832790B44C0015C88C /* Collection+Safe.swift */,
+				CFFEB68B279C2E9000384184 /* Color+Custom.swift */,
 				3FC9D8B22562389E00BF115D /* ContentView.swift */,
 				3FC9D8B92562389F00BF115D /* Info.plist */,
 				CFCC76A42799EE4000D078A5 /* MenuFetcher.swift */,
@@ -163,6 +184,8 @@
 				CF0D97212794801D00DA3494 /* MenuFetchingPlaceholder.swift */,
 				CF9E687D2790AD480015C88C /* MenuGrouping.swift */,
 				CF9E687F2790AD960015C88C /* MenuItem.swift */,
+				CFFEB691279C31DC00384184 /* MenuItemDetail+ViewModel.swift */,
+				CFFEB68F279C319800384184 /* MenuItemDetail.swift */,
 				CF0D971B27943DB100DA3494 /* MenuList+ViewModel.swift */,
 				CF9E68852790B7850015C88C /* MenuList.swift */,
 				CFCC76A02798A4AD00D078A5 /* MenuResponse.swift */,
@@ -170,6 +193,12 @@
 				CF0D9713279431FF00DA3494 /* MenuRow.swift */,
 				CF9E68812790ADA70015C88C /* MenuSection.swift */,
 				CFCC76A62799F24F00D078A5 /* NetworkFetching.swift */,
+				CFFEB67F279C2BD800384184 /* Order.swift */,
+				CFFEB683279C2CB800384184 /* OrderButton+ViewModel.swift */,
+				CFFEB685279C2CE400384184 /* OrderButton.swift */,
+				CFFEB681279C2BFE00384184 /* OrderController.swift */,
+				CFFEB687279C2E3500384184 /* OrderDetail+ViewModel.swift */,
+				CFFEB689279C2E5900384184 /* OrderDetail.swift */,
 				3FC9D8B62562389F00BF115D /* Preview Content */,
 				CFBF29FC27975511001A8FE3 /* TestError.swift */,
 				CFCC76A82799F28E00D078A5 /* URLSession+NetworkFetching.swift.swift */,
@@ -195,6 +224,7 @@
 				CF9E687B2790AC360015C88C /* MenuGroupingTests.swift */,
 				CF9E689527942ABE0015C88C /* MenuItem+Fixture.swift */,
 				CFCC769C27989F9E00D078A5 /* MenuItem+JSONFixture.swift */,
+				CFFEB68D279C306500384184 /* MenuItemDetail+ViewModelTests.swift */,
 				CFCC769627989B6700D078A5 /* MenuItemTests.swift */,
 				CF0D971D2794764800DA3494 /* MenuList+ViewModelTests.swift */,
 				CF0D9719279436B800DA3494 /* MenuListViewModelTests.swift */,
@@ -371,12 +401,15 @@
 			files = (
 				3FC9D8B12562389E00BF115D /* AlbertosApp.swift in Sources */,
 				CF9E68842790B44C0015C88C /* Collection+Safe.swift in Sources */,
+				CFFEB68C279C2E9000384184 /* Color+Custom.swift in Sources */,
 				3FC9D8B32562389E00BF115D /* ContentView.swift in Sources */,
 				CFCC76A52799EE4000D078A5 /* MenuFetcher.swift in Sources */,
 				CF0D972027947DE300DA3494 /* MenuFetching.swift in Sources */,
 				CF0D97222794801D00DA3494 /* MenuFetchingPlaceholder.swift in Sources */,
 				CF9E687E2790AD480015C88C /* MenuGrouping.swift in Sources */,
 				CF9E68802790AD960015C88C /* MenuItem.swift in Sources */,
+				CFFEB692279C31DC00384184 /* MenuItemDetail+ViewModel.swift in Sources */,
+				CFFEB690279C319800384184 /* MenuItemDetail.swift in Sources */,
 				CF0D971C27943DB100DA3494 /* MenuList+ViewModel.swift in Sources */,
 				CF9E68862790B7850015C88C /* MenuList.swift in Sources */,
 				CFCC76A12798A4AD00D078A5 /* MenuResponse.swift in Sources */,
@@ -384,6 +417,12 @@
 				CF0D9714279431FF00DA3494 /* MenuRow.swift in Sources */,
 				CF9E68822790ADA70015C88C /* MenuSection.swift in Sources */,
 				CFCC76A72799F24F00D078A5 /* NetworkFetching.swift in Sources */,
+				CFFEB680279C2BD800384184 /* Order.swift in Sources */,
+				CFFEB684279C2CB800384184 /* OrderButton+ViewModel.swift in Sources */,
+				CFFEB686279C2CE400384184 /* OrderButton.swift in Sources */,
+				CFFEB682279C2BFE00384184 /* OrderController.swift in Sources */,
+				CFFEB688279C2E3500384184 /* OrderDetail+ViewModel.swift in Sources */,
+				CFFEB68A279C2E5900384184 /* OrderDetail.swift in Sources */,
 				CFBF29FD27975511001A8FE3 /* TestError.swift in Sources */,
 				CFCC76A92799F28E00D078A5 /* URLSession+NetworkFetching.swift.swift in Sources */,
 			);
@@ -399,6 +438,7 @@
 				CF9E687C2790AC360015C88C /* MenuGroupingTests.swift in Sources */,
 				CF9E689627942ABE0015C88C /* MenuItem+Fixture.swift in Sources */,
 				CFCC769D27989F9E00D078A5 /* MenuItem+JSONFixture.swift in Sources */,
+				CFFEB68E279C306500384184 /* MenuItemDetail+ViewModelTests.swift in Sources */,
 				CFCC769727989B6700D078A5 /* MenuItemTests.swift in Sources */,
 				CF0D971E2794764800DA3494 /* MenuList+ViewModelTests.swift in Sources */,
 				CF0D971A279436B800DA3494 /* MenuListViewModelTests.swift in Sources */,

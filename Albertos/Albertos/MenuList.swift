@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuList: View {
     @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject private var orderController: OrderController
     
     var body: some View {
         
@@ -18,7 +19,9 @@ struct MenuList: View {
                 ForEach(sections) { section in
                     Section(content: {
                         ForEach(section.items) { item in
-                            MenuRow(viewModel: .init(item: item))
+                            NavigationLink(destination: destination(for: item)) {
+                                MenuRow(viewModel: .init(item: item))
+                            }
                         }
                     }, header: {
                         Text(section.category)
@@ -31,6 +34,10 @@ struct MenuList: View {
         }
         
         
+    }
+    
+    func destination(for item: MenuItem) -> MenuItemDetail {
+        return MenuItemDetail(viewModel: .init(item: item, orderController: orderController))
     }
 }
 //
