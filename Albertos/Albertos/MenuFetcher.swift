@@ -11,14 +11,17 @@ import Combine
 class MenuFetcher: MenuFetching {
     
     let networkFetching: NetworkFetching
+    let baseURL: URL
     
-    init(networkFetching: NetworkFetching = URLSession.shared) {
+    init(baseURL: URL = URL(string: "https://raw.githubusercontent.com/mokagio/tddinswift_fake_api/trunk")!,
+         networkFetching: NetworkFetching = URLSession.shared) {
+        self.baseURL = baseURL
         self.networkFetching = networkFetching
     }
     
     func fetchMenu() -> AnyPublisher<[MenuItem], Error> {
-        let url = URL(string: "https://raw.githubusercontent.com/mokagio/tddinswift_fake_api/trunk/menu_response.json")!
-        return networkFetching.load(URLRequest(url: url))
+        let request = URLRequest(url: baseURL.appendingPathComponent("menu_response.json"))
+        return networkFetching.load(request)
             .decode(type: [MenuItem].self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }

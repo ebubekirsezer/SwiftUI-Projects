@@ -19,11 +19,11 @@ class MenuFetcherTests: XCTestCase {
 
     func testWhenRequestSucceedsPublishesDecodedMenuItems() throws {
         let json = """
-        [
-            { "name": "a name", "category": "a category", "spicy": true },
-            { "name": "another name", "category": "a category", "spicy": true }
-        ]
-        """
+[
+    { "name": "a name", "category": "a category", "spicy": true, "price": 1.0 },
+    { "name": "another name", "category": "a category", "spicy": true, "price": 2.0 }
+]
+"""
         let data = try XCTUnwrap(json.data(using: .utf8))
         let menuFetcher = MenuFetcher(networkFetching: NetworkFetchingStub(returning: .success(data)))
         let expectation = XCTestExpectation(description: "Publishes decoded [MenuItem]")
@@ -59,5 +59,31 @@ class MenuFetcherTests: XCTestCase {
         
         wait(for: [expectation], timeout: 1)
 
+    }
+    
+    func testUsesGivenBaseURLInRequest() throws {
+        //let url = try XCTUnwrap(URL(string: "https://s3.amazonaws.com/mokacoding/menu_response.json"))
+        let baseURL = try XCTUnwrap(URL(string: "https://test.url"))
+        let url = baseURL.appendingPathComponent("menu_response.json")
+        let json = """
+[
+    { "name": "a name", "category": "a category", "spicy": true, "price": 1.0 }
+]
+"""
+        let data = try XCTUnwrap(json.data(using: .utf8))
+        let networkingFetchingStub = NetworkFetchingStub(returning: .success(data), for: URLRequest(url: url))
+        let menuFetcher = MenuFetcher(baseURL: baseURL, networkFetching: networkingFetchingStub)
+
+        let expectation = XCTestExpectation(description: "Receives data")
+        
+        menuFetcher.fetchMenu()
+            .sink { _ in
+                
+            } receiveValue: { items in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [expectation], timeout: 1)
     }
 }
