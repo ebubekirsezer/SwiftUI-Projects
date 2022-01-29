@@ -27,7 +27,7 @@ class EventLoggerTest: XCTestCase {
         XCTAssertEqual(hippoAnalyticsSpy.loggedEvents.count, 1)
         let event = try XCTUnwrap(hippoAnalyticsSpy.loggedEvents.first)
         XCTAssertEqual(event.name, "test")
-        XCTAssertEqual(event.pro, <#T##expression2: Equatable##Equatable#>)
+        XCTAssertEqual(event.properties?["key"] as? String, "value")
     }
 
 }
