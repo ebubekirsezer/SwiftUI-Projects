@@ -46,4 +46,48 @@ class OrderDetailViewModelTests: XCTestCase {
         viewModel.checkout()
         XCTAssertEqual(paymentProcessingSpy.receivedOrder, orderController.order)
     }
+    
+    func testWhenPaymentSucceedsUpdatesPropertyToShowConfirmationAlert() {
+        let viewModel = OrderDetail.ViewModel(orderController: OrderController(),
+                                              paymentProcessor: PaymentProcessingStub(returning: .success(())))
+        let predicate = NSPredicate { _, _ in
+            viewModel.alertToShow != nil
+        }
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: .none)
+        viewModel.checkout()
+        wait(for: [expectation], timeout: timeoutForPredicateExpectations)
+        XCTAssertEqual(viewModel.alertToShow?.title, "")
+        XCTAssertEqual(viewModel.alertToShow?.message, "The payment was successful. Your food will be with you shortly.")
+        XCTAssertEqual(viewModel.alertToShow?.buttonText, "Ok")
+    }
+    
+    func testWhenPaymentFailsUpdatesPropertyToShowErrorAlert() {
+        let viewModel = OrderDetail.ViewModel(orderController: OrderController(),
+                                              paymentProcessor: PaymentProcessingStub(returning: .failure(TestError(id: 123))))
+        
+        let predicate = NSPredicate(block: { _, _ in viewModel.alertToShow != nil })
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: .none)
+        viewModel.checkout()
+        
+        wait(for: [expectation], timeout: timeoutForPredicateExpectations)
+        XCTAssertEqual(viewModel.alertToShow?.title, "")
+        XCTAssertEqual(viewModel.alertToShow?.message, "There's been an error with your order. Please contact a waiter")
+        XCTAssertEqual(viewModel.alertToShow?.buttonText, "Ok")
+        
+    }
+    
+    func testWhenPaymentSucceedsDismissingTheAlertRunsTheGivenClosure() {
+        var called = false
+        let viewModel = OrderDetail.ViewModel(orderController: OrderController(),
+                                              onAlertDismiss: { called = true },
+                                              paymentProcessor: PaymentProcessingStub(returning: .success(())))
+        let predicate = NSPredicate  { _, _ in
+            viewModel.alertToShow != nil
+        }
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: .none)
+        viewModel.checkout()
+        wait(for: [expectation], timeout: timeoutForPredicateExpectations)
+        viewModel.alertToShow?.buttonAction?()
+        XCTAssertTrue(called)
+    }
 }

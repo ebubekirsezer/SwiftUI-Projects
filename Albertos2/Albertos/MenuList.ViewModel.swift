@@ -7,6 +7,7 @@ extension MenuList {
         @Published private(set) var sections: Result<[MenuSection], Error> = .success([])
 
         private var cancellables = Set<AnyCancellable>()
+        
 
         init(
             menuFetching: MenuFetching,

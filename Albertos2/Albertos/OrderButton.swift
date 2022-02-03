@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct OrderButton: View {
-
+    
     @ObservedObject private(set) var viewModel: ViewModel
-
+    
     @State private(set) var showingDetail: Bool = false
     @EnvironmentObject var orderController: OrderController
-
+    
     var body: some View {
         Button {
             self.showingDetail.toggle()
@@ -19,7 +19,11 @@ struct OrderButton: View {
                 .cornerRadius(10.0)
         }
         .sheet(isPresented: $showingDetail) {
-            OrderDetail(viewModel: .init(orderController: orderController))
+            OrderDetail(viewModel: .init(orderController: orderController,
+                                         onAlertDismiss: {
+                self.showingDetail = false
+            }),
+                        isPresented: $showingDetail)
         }
     }
 }
