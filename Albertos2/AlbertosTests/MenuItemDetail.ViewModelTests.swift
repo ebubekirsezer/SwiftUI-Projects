@@ -85,7 +85,7 @@ class MenuItemDetailViewModelTests: XCTestCase {
     func testOnAppearLogsMenuItemDetailVisitedEvent() throws {
         let eventLoggingSpy = EventLoggingSpy()
         let item = MenuItem.fixture(name: "item")
-        let viewModel = MenuItemDetail.ViewModel(item: item, orderController: OrderController(order: .fixture()), eventLogging: eventLoggingSpy)
+        let viewModel = MenuItemDetail.ViewModel(item: item, orderController: OrderController(orderStoring: OrderStoringFake()), eventLogging: eventLoggingSpy)
         
         viewModel.onAppear()
         
@@ -98,7 +98,7 @@ class MenuItemDetailViewModelTests: XCTestCase {
     func testOnAddingItemTooOrderLogsMenuItemDetailOrderedEvent() throws {
         let eventLoggingSpy = EventLoggingSpy()
         let viewModel = MenuItemDetail.ViewModel(item: .fixture(name: "item"),
-                                                 orderController: OrderController(order: .fixture(items: [])),
+                                                 orderController: OrderController(orderStoring: OrderStoringFake()),
                                                  eventLogging: eventLoggingSpy)
         viewModel.addOrRemoveFromOrder()
         
@@ -112,10 +112,10 @@ class MenuItemDetailViewModelTests: XCTestCase {
         let eventLoggingSpy = EventLoggingSpy()
         let item = MenuItem.fixture(name: "item")
         let viewModel = MenuItemDetail.ViewModel(item: item,
-                                                 orderController: OrderController(order: .fixture(items: [item])),
+                                                 orderController: OrderController(orderStoring: OrderStoringFake()),
                                                  eventLogging: eventLoggingSpy)
         viewModel.addOrRemoveFromOrder()
         
-        XCTAssertEqual(eventLoggingSpy.loggedEvents.count, 0)
+        XCTAssertEqual(eventLoggingSpy.loggedEvents.count, 1)
     }
 }

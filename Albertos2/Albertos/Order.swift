@@ -5,6 +5,9 @@ struct Order {
     var total: Double { items.reduce(0) { $0 + $1.price } }
 }
 
-extension Order: Equatable {
+extension Order: Codable, Equatable {
     
+    func encode(to encoder: Encoder) throws {
+        
+    }
 }

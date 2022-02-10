@@ -2,13 +2,9 @@
 import XCTest
 
 class OrderDetailViewModelTests: XCTestCase {
-
-    func testWhenOrderIsEmptyShouldNotShowTotalAmount() {
-        let viewModel = OrderDetail.ViewModel(orderController: OrderController(), onAlertDismiss: {})
-
-        XCTAssertNil(viewModel.totalText)
-    }
-
+    
+    let alertDismissDummy: () -> Void = { }
+    
     func testWhenOrderIsNonEmptyShouldShowTotalAmount() {
         let orderController = OrderController()
         orderController.addToOrder(item: .fixture(price: 1.0))
@@ -37,7 +33,7 @@ class OrderDetailViewModelTests: XCTestCase {
     
     func testWhenCheckoutButtonTappedStartsPaymentProcessingFlow() {
         // Create an OrderController and add some items to it
-        let orderController = OrderController()
+        let orderController = OrderController(orderStoring: OrderStoringFake())
         orderController.addToOrder(item: .fixture(name: "name"))
         orderController.addToOrder(item: .fixture(name: "other name"))
         // Create the Spy
@@ -111,5 +107,13 @@ class OrderDetailViewModelTests: XCTestCase {
         viewModel.alertToShow?.buttonAction?()
         // Verify the order has been reset
         XCTAssertTrue(orderController.order.items.isEmpty)
+    }
+    
+    func testWhenOrderIsEmptyShouldNotShowTotalAmount() {
+        let viewModel = OrderDetail.ViewModel(orderController: OrderController(orderStoring: OrderStoringFake()),
+                                              onAlertDismiss: alertDismissDummy,
+                                              paymentProcessor: PaymentProcessingDummy())
+        
+        XCTAssertNil(viewModel.totalText)
     }
 }
