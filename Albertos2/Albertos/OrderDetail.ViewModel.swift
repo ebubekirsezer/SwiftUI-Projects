@@ -45,7 +45,10 @@ extension OrderDetail {
                     self.alertToShow = Alert.ViewModel(title: "",
                                                        message: "The payment was successful. Your food will be with you shortly.",
                                                        buttonText: "Ok",
-                                                       buttonAction: self.onAlertDismiss)
+                                                       buttonAction: {
+                        self.orderController.resetOrder()
+                        self.onAlertDismiss()
+                    })
                 }
                 .store(in: &cancellables)
             

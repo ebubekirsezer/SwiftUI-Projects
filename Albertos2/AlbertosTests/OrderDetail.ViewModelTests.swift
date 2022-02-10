@@ -4,7 +4,7 @@ import XCTest
 class OrderDetailViewModelTests: XCTestCase {
 
     func testWhenOrderIsEmptyShouldNotShowTotalAmount() {
-        let viewModel = OrderDetail.ViewModel(orderController: OrderController())
+        let viewModel = OrderDetail.ViewModel(orderController: OrderController(), onAlertDismiss: {})
 
         XCTAssertNil(viewModel.totalText)
     }
@@ -13,13 +13,13 @@ class OrderDetailViewModelTests: XCTestCase {
         let orderController = OrderController()
         orderController.addToOrder(item: .fixture(price: 1.0))
         orderController.addToOrder(item: .fixture(price: 2.3))
-        let viewModel = OrderDetail.ViewModel(orderController: orderController)
+        let viewModel = OrderDetail.ViewModel(orderController: orderController, onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.totalText, "Total: $3.30")
     }
 
     func testWhenOrderIsEmptyHasNotItemNamesToShow() {
-        let viewModel = OrderDetail.ViewModel(orderController: OrderController())
+        let viewModel = OrderDetail.ViewModel(orderController: OrderController(), onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.menuListItems.count, 0)
     }
@@ -28,7 +28,7 @@ class OrderDetailViewModelTests: XCTestCase {
         let orderController = OrderController()
         orderController.addToOrder(item: .fixture(name: "a name"))
         orderController.addToOrder(item: .fixture(name: "another name"))
-        let viewModel = OrderDetail.ViewModel(orderController: orderController)
+        let viewModel = OrderDetail.ViewModel(orderController: orderController, onAlertDismiss: {})
 
         XCTAssertEqual(viewModel.menuListItems.count, 2)
         XCTAssertEqual(viewModel.menuListItems.first?.name, "a name")
@@ -42,13 +42,14 @@ class OrderDetailViewModelTests: XCTestCase {
         orderController.addToOrder(item: .fixture(name: "other name"))
         // Create the Spy
         let paymentProcessingSpy = PaymentProcessingSpy()
-        let viewModel = OrderDetail.ViewModel(orderController: orderController, paymentProcessor: paymentProcessingSpy)
+        let viewModel = OrderDetail.ViewModel(orderController: orderController, onAlertDismiss: {}, paymentProcessor: paymentProcessingSpy)
         viewModel.checkout()
         XCTAssertEqual(paymentProcessingSpy.receivedOrder, orderController.order)
     }
     
     func testWhenPaymentSucceedsUpdatesPropertyToShowConfirmationAlert() {
         let viewModel = OrderDetail.ViewModel(orderController: OrderController(),
+                                              onAlertDismiss: {},
                                               paymentProcessor: PaymentProcessingStub(returning: .success(())))
         let predicate = NSPredicate { _, _ in
             viewModel.alertToShow != nil
@@ -63,6 +64,7 @@ class OrderDetailViewModelTests: XCTestCase {
     
     func testWhenPaymentFailsUpdatesPropertyToShowErrorAlert() {
         let viewModel = OrderDetail.ViewModel(orderController: OrderController(),
+                                              onAlertDismiss: {},
                                               paymentProcessor: PaymentProcessingStub(returning: .failure(TestError(id: 123))))
         
         let predicate = NSPredicate(block: { _, _ in viewModel.alertToShow != nil })
@@ -89,5 +91,25 @@ class OrderDetailViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: timeoutForPredicateExpectations)
         viewModel.alertToShow?.buttonAction?()
         XCTAssertTrue(called)
+    }
+    
+    func testWhenPaymentSucceedsDismissingTheAlertResetsTheOrder() {
+        // Arrange the input state with a valid order, one that has items
+        let orderController = OrderController()
+        let viewModel = OrderDetail.ViewModel(orderController: orderController,
+                                              onAlertDismiss: {},
+                                              paymentProcessor: PaymentProcessingStub(returning: .success(())))
+        
+        // Perform the checkout and wait for it to succeed
+        let predicate = NSPredicate { _, _ in
+            viewModel.alertToShow != nil
+        }
+        let expectation = XCTNSPredicateExpectation(predicate: predicate, object: .none)
+        viewModel.checkout()
+        wait(for: [expectation], timeout: timeoutForPredicateExpectations)
+        // Run the alert dismiss code
+        viewModel.alertToShow?.buttonAction?()
+        // Verify the order has been reset
+        XCTAssertTrue(orderController.order.items.isEmpty)
     }
 }

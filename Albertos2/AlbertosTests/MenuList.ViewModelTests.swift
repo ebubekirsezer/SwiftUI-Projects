@@ -47,6 +47,7 @@ class MenuListViewModelTests: XCTestCase {
     }
 
     func testWhenFetchingFailsPublishesAnError() {
+
         let expectedError = TestError(id: 123)
         let menuFetchingStub = MenuFetchingStub(returning: .failure(expectedError))
         let viewModel = MenuList.ViewModel(
